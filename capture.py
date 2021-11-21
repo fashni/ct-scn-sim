@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 from picamera import PiCamera
 from skimage.color import rgb2gray
 from skimage import io, img_as_ubyte
+from tifffile import imsave
 
 N = 256 # jumlah citra yg akan diambil
 IMG_DIM = (512, 512) # ukuran dimensi citra
@@ -60,5 +61,5 @@ GPIO.cleanup()
 
 # simpan citra 3d
 print('Saving images...')
-io.imsave('Data/citra_kamera.tif', cit3d)
+imsave('Data/citra_kamera.tif', cit3d, compress=6)
 print(f'time: {time.time()-tt}s\n')
